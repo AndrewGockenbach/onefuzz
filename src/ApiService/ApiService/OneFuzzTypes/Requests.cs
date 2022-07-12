@@ -109,3 +109,14 @@ public record ContainerDelete(
     Container Name,
     IDictionary<string, string>? Metadata = null
 ) : BaseRequest;
+
+public record JobGet(
+    Guid JobId
+);
+
+public record JobSearch(
+    Guid? JobId = null,
+    List<JobState>? State = null,
+    List<TaskState>? TaskState = null,
+    bool? WithTasks = null
+);

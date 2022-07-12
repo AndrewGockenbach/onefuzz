@@ -572,7 +572,7 @@ public record JobConfig(
     string Project,
     string Name,
     string Build,
-    int Duration,
+    long Duration,
     string? Logs
 );
 
@@ -586,8 +586,8 @@ public record Job(
     [PartitionKey][RowKey] Guid JobId,
     JobState State,
     JobConfig Config,
-    string? Error,
-    DateTimeOffset? EndTime
+    string? Error = null,
+    DateTimeOffset? EndTime = null
 ) : StatefulEntityBase<JobState>(State) {
     public List<JobTaskInfo>? TaskInfo { get; set; }
     public UserInfo? UserInfo { get; set; }
